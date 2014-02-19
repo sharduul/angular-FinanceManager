@@ -1,2 +1,2 @@
 cd app
-node ..scripts\web-server.js
+node C:\Users\Shardul\Documents\GitHub\FinanceManager\scripts\web-server.js
