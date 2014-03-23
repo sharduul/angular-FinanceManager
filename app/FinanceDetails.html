@@ -10,7 +10,7 @@
 	<div class="navbar">
 		<div class="navbar-inner">
 			<ul class="nav">
-
+				<a href="NewFinanceItem.html">Add New</a>
 			</ul>
 		</div>
 	</div>
@@ -38,16 +38,25 @@
 				<div class="span11">
 					<div><strong>People Invovled</strong>
 						<nav>
-							<button style="margin-left:10px" ng-repeat="between_person in event.between_persons">{{between_person}}</button>
+							<button style="margin-left:10px" ng-style="mystyle_button" ng-repeat="between_person in event.between_persons">{{between_person}}</button>
 						</nav>
 					</div>
 				</div>
 			</div>
 			<br>
 			<h4>Comments</h4>
+
+			<select ng-model="comment_sort_order" class="input-small">
+				<option selected value="name">Name</option>
+				<option value="-upvote">Upvote</option>
+			</select>
+
+			<div>
+				<input type="text" placeholder="search" ng-model="query_comment"/>
+			</div>
 			
 			<ul class="thumbnails">
-				<li ng-repeat="comment in event.comments">
+				<li ng-repeat="comment in event.comments | orderBy:comment_sort_order | filter:query_comment" >
 					<div class="row session">
 						<div class="span0 well votingWidget">
 							<div class="votingButton" ng-click="upVoteComment(comment)">
@@ -62,8 +71,10 @@
 						</div>
 						
 						<div class="well span9">
-							<h4>{{comment.name}}</h4>
-							<p>{{comment.content}}</p>
+							<!-- <h4>{{comment.name}}</h4> -->
+							<h4 ng-bind-template="{{comment.name}} - {{comment.date}}"></h4>
+							<p ng-bind="comment.content"></p>
+							<!-- <p>{{comment.content}}</p> -->
 						</div>
 					</div>
 				</li>
