@@ -2,14 +2,19 @@
 
 financeApp.controller('EditFinanceController',
 
-	function EditFinanceController($scope){
+	function EditFinanceController($scope, financeData){
 
+		$scope.event = {};
 
 		$scope.SaveFinanceItem = function(event, newFinanceItemForm){
 
 			if(newFinanceItemForm.$valid)
 			{
-				window.alert(event.name + " has been saved !!!");
+				financeData.save($scope.event)
+					.then(
+							function(response) { console.log('success', response); },
+							function(response) { console.log('failure', response); }
+						);
 			}
 			
 		}

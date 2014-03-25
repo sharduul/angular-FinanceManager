@@ -7,7 +7,16 @@ financeApp.controller('FinanceController',
 
 		$scope.comment_sort_order = '-upvote';
 		$scope.mystyle_button = {color:'blue'};
-		$scope.event = financeData.event;
+
+
+		$scope.event = financeData.getFinanceEvent();
+		$scope.event.then(
+				function(event){ console.log(event); $scope.event = event; },
+				function(response){ console.log(response); }
+			);
+		
+		
+		//$scope.event = financeData.event;
 
 
 

@@ -1,0 +1,33 @@
+{
+	"name": "Ritz tiger sub",
+	"amount": "30",
+	"date": "1/1/2014",
+	"type": "bill",
+	"paid_by":
+		{
+			"name": "Shardul Bagade",
+			"location": "Rochester"
+		},
+	"between_persons":["shardul", "tushar", "mihir", "dale", "ashwini"],
+	"comments":
+	[
+		{
+			"name": "dale",
+			"content": "kadhto!",
+			"date": "1/1/2014",
+			"upvote": "0"
+		},
+		{
+			"name": "shardul",
+			"content": "very nice sub",
+			"date": "1/1/2014",
+			"upvote": "0"
+		}
+		
+	],
+
+	"imageURL":"",
+	"id":"1"
+	
+	
+}

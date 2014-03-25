@@ -2,4 +2,4 @@
 
 
 // Declare app level module which depends on filters, and services
-var financeApp = angular.module('financeApp', []);
+var financeApp = angular.module('financeApp', ['ngResource']);
