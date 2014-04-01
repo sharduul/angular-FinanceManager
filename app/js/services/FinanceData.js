@@ -39,6 +39,14 @@ financeApp.factory('financeData', function($resource, $q){
 				);
 
 			return deferred.promise;
+		},
+
+
+		getAllEvents: function(){
+
+			console.log("1111");
+			return resource.query();
+			console.log("2222");
 		}
 
 		

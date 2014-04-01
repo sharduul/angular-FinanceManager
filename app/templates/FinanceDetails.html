@@ -1,0 +1,73 @@
+
+<div class="container">
+	<!-- <div ng-controller="FinanceController"> -->
+	<div>
+		<div class="row">
+			<div class="span11">
+				<h2>{{event.name}}</h2>
+			</div>
+		</div>
+		<div class="row">
+			<div class="span3">
+				<div><strong>Paid by: </strong>
+					{{event.paid_by.name}},<br/>
+					{{event.paid_by.location}}
+				</div>
+			</div>
+			<div class="span3">
+				<div><strong>Amount: </strong>{{event.amount | currency}}</div> 
+				<div><strong>Date: </strong>{{event.date}}</div>
+				<div><strong>Type: </strong>{{event.type}}</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="span11">
+				<div><strong>People Invovled</strong>
+					<nav>
+						<button style="margin-left:10px" ng-style="mystyle_button" ng-repeat="between_person in event.between_persons">{{between_person}}</button>
+					</nav>
+				</div>
+			</div>
+		</div>
+		<br>
+		<h4>Comments</h4>
+
+		<select ng-model="comment_sort_order" class="input-small">
+			<option selected value="name">Name</option>
+			<option value="-upvote">Upvote</option>
+		</select>
+
+		<div>
+			<input type="text" placeholder="search" ng-model="query_comment"/>
+		</div>
+		
+		<ul class="thumbnails">
+			<li ng-repeat="comment in event.comments | orderBy:comment_sort_order | filter:query_comment" >
+				<div class="row session">
+					<div class="span0 well votingWidget">
+						<div class="votingButton" ng-click="upVoteComment(comment)">
+							<i class="icon-chevron-up icon-black"></i>
+						</div>
+						<div class="badge badge-inverse">
+							<div>{{comment.upvote}}</div>
+						</div>
+						<div class="votingButton" ng-click="downVoteComment(comment)">
+							<i class="icon-chevron-down icon-black"></i>
+						</div>
+					</div>
+					
+					<div class="well span9">
+						<!-- <h4>{{comment.name}}</h4> -->
+						<h4 ng-bind-template="{{comment.name}} - {{comment.date}}"></h4>
+						<p ng-bind="comment.content"></p>
+						<!-- <p>{{comment.content}}</p> -->
+					</div>
+				</div>
+			</li>
+		</ul>
+			
+	</div> 
+</div>
+
+
+	
