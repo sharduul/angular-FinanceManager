@@ -28,6 +28,16 @@ var financeApp = angular.module('financeApp', ['ngRoute', 'ngResource'])
 				templateUrl:'templates/FinanceDetails.html',
 				controller: 'FinanceController'
 			})
+
+		// routing to sample user defined directive
+		.when('/sampleDirective',
+			{
+				// you can also create custom route property
+				//foo: 'value',
+
+				templateUrl:'templates/SampleDirective.html',
+				controller: 'SampleDirectiveController'
+			})
 		.otherwise({ redirectTo: '/newFinanceItem'});
 
 
