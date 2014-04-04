@@ -5,7 +5,7 @@
 var financeApp = angular.module('financeApp', ['ngRoute', 'ngResource'])
 	
 	// configure the route
-	.config(function($routeProvider){
+	.config(function($routeProvider, $locationProvider){
 
 		$routeProvider
 		.when('/newFinanceItem',
@@ -18,10 +18,19 @@ var financeApp = angular.module('financeApp', ['ngRoute', 'ngResource'])
 				templateUrl:'templates/FinanceItemList.html',
 				controller: 'FinanceItemListController'
 			})
+
+		//'eventID' param can be accessed by controller using routeparams
 		.when('/financeItemDetails/:eventId',
 			{
+				// you can also create custom route property
+				//foo: 'value',
+
 				templateUrl:'templates/FinanceDetails.html',
 				controller: 'FinanceController'
-			});
+			})
+		.otherwise({ redirectTo: '/newFinanceItem'});
 
+
+		// get rid of hash signs. is not working. check this.
+		// $locationProvider.html5Mode(true);
 	});

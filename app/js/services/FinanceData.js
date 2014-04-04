@@ -6,7 +6,7 @@ financeApp.factory('financeData', function($resource, $q){
 	var resource = $resource('/data/event/:id', {id: '@id'});
 	return {
 
-		getFinanceEvent: function(){
+		getFinanceEvent: function(eventID){
 
 			//var deferred = $q.defer();
 
@@ -15,7 +15,7 @@ financeApp.factory('financeData', function($resource, $q){
 			var deferred = $q.defer();
 
 			//$resource('/data/event/:id.json', {id:'@id'})
-				resource.get({id:1},
+				resource.get({id:eventID},
 					function(event){
 						deferred.resolve(event);
 					},
